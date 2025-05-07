@@ -1,4 +1,3 @@
-import { useToast } from "@/hooks/use-toast"
 import {
   Toast,
   ToastClose,
@@ -6,10 +5,15 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "@/components/ui/toast"
+} from "./toast"
+import { useState, useEffect } from "react"
 
-export function Toaster() {
-  const { toasts } = useToast()
+function ToasterComponent() {
+  const [toasts, setToasts] = useState<any[]>([])
+
+  useEffect(() => {
+    setToasts([])
+  }, [])
 
   return (
     <ToastProvider>
@@ -31,3 +35,5 @@ export function Toaster() {
     </ToastProvider>
   )
 }
+
+export const Toaster = ToasterComponent;
